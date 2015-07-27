@@ -2,10 +2,16 @@
 %html{lang: "ja", prefix: "og: http://ogp.me/ns#"}
   %head
     %title video_chat_with_tokbox
+
     = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "//static.opentok.com/webrtc/v2.2/js/TB.min.js"
+    :javascript
+      var apiKey = '45295772';
+      var sessionId =  "#{@session_id}";
+      var token = "#{@token}";
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     = render "partials/navbar"
     = render "partials/flashes"
     = render "partials/main"
-    = javascript_include_tag "application"

@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
   end
 
   def create
+    binding.pry
     session = @opentok.create_session
     binding.pry
     params[:room][:session_id] = session.session_id
@@ -22,13 +23,14 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @tok_token = @opentok.generate_token @room.session_id
+    @session_id = @room.session_id
+    @token = @opentok.generate_token @session_id
   end
 
   private
   def config_opentok
     if @opentok.nil?
-     @opentok = OpenTok::OpenTok.new 45281572, "cfe31974ff35ceee061ae00a0c0b46b6f37c0189"
+     @opentok = OpenTok::OpenTok.new 45295772, "84020cdc8d90819250011e21da34048400d7248c"
     end
   end
 
