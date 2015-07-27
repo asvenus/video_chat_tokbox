@@ -1,0 +1,17 @@
+%div
+  %h2
+    %span  Create new room
+    = link_to "Create new room", new_room_path
+%div
+  %div.main
+    %table.table.table-bordered.table-statistic-result
+      %thead
+        %th Name
+        %th Created
+      %tbody
+        - @rooms.each do |room|
+          %tr
+            %td{align: "center", width: "300px"}
+              = link_to "#{room.name}", room_path(room)
+            %td
+              = room.created_at

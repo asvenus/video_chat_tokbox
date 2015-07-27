@@ -1,0 +1,12 @@
+- if resource.errors.any?
+  - if resource.errors.count == 1
+    - resource.errors.full_messages.each do |msg|
+      .alert.alert-danger
+        = msg
+  - else
+    .alert.alert-danger.mt1
+      %ul.unstyled
+        - resource.errors.full_messages.each do |msg|
+          %li
+            %i.icon-warning-sign
+            = msg
