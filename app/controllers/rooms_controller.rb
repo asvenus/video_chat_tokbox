@@ -9,9 +9,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    binding.pry
     session = @opentok.create_session
-    binding.pry
     params[:room][:session_id] = session.session_id
     @room = Room.new(room_params)
     if @room.save
